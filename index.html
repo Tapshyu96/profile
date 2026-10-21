@@ -248,7 +248,416 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
   .contact,footer{--c-bg:#0B111E;--c-fg:#E8EDF6}
   .degree{background:#24314C;color:var(--ink)}
 }
+
+/* company logos */
+.logo{position:relative;height:52px;min-width:52px;max-width:150px;padding:8px 10px;border-radius:12px;background:#fff;border:1px solid #D5DBE5;display:grid;place-items:center;flex:none}
+.logo img{display:block;max-height:34px;max-width:128px;width:auto;height:auto}
+.logo span{display:none;font:800 17px/1 var(--display);color:#18233A}
+.logo.no-img span{display:block}
+.card header{align-items:center}
+.card header .logo + div{flex:1;min-width:180px}
+.worked{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin:-16px 0 40px}
+.worked-label{font-size:14px;color:var(--ink-soft);margin-right:4px}
+.worked-co{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:6px 14px 6px 6px;border:1px solid var(--line);border-radius:16px;background:var(--sheet)}
+.worked-co:hover{border-color:var(--cobalt)}
+.worked-co .logo{height:44px;min-width:44px;padding:6px 8px;border-radius:10px}
+.worked-co .logo img{max-height:28px;max-width:96px}
+.worked-co b{font-weight:600;font-size:15px}
+.job{scroll-margin-top:80px}
 </style>
+<!--
+  ===================== YOUR LINKEDIN POSTS =====================
+  The website sorts these by impressions and shows only the TOP 5.
+
+  To add a new post: copy one { ... } block, paste it at the top of the list, then fill in:
+    title        – short heading shown on the card
+    summary      – one line shown under the title
+    impressions  – number from LinkedIn analytics (plain number, no commas)
+    url          – (optional) the post's link from LinkedIn ("Copy link to post")
+    text         – paste the full post text between the ` backticks
+                   (a blank line starts a new paragraph, **text** becomes bold)
+  To refresh numbers later, just change the impressions values.
+  ===============================================================
+-->
+<script>
+window.LINKEDIN_POSTS = [
+  {
+    title: "Roadmap of QA: from manual to automation to quality engineer",
+    summary: "The three stages most testers grow through, and what to learn at each.",
+    impressions: 38085,
+    url: "",
+    text: `🛣️ Roadmap of QA: From Manual ➝ Automation ➝ Quality Engineer 🚀
+
+A QA career doesn't stop at manual testing — it **evolves**.
+Here's a simple roadmap many testers follow in real projects 👇
+
+**🔹 Step 1: Manual QA Foundation 🧪**
+This is where every strong QA journey begins.
+
+✔️ Understanding requirements & user stories
+✔️ Writing test scenarios & test cases
+✔️ Functional, regression & exploratory testing
+✔️ Bug reporting & tracking (JIRA, etc.)
+✔️ Basics of SDLC & Agile 🔄
+
+📌 Focus: Think like a user, break the system
+
+**🔹 Step 2: Move to Automation QA 🤖**
+Once testing concepts are clear, automation becomes easier.
+
+✔️ Learn a programming language (Python / Java / JS) 💻
+✔️ Automation tools (Selenium, Playwright, Cypress)
+✔️ Frameworks (PyTest, TestNG, BDD)
+✔️ API automation (Postman, RestAssured) 🌐
+✔️ Version control (Git) & CI/CD basics ⚙️
+
+📌 Focus: Automate repetitive tests & improve speed
+
+**🔹 Step 3: Evolve into a Quality Engineer 🧠**
+Automation is not the end — **quality ownership** is.
+
+✔️ Test strategy & test planning
+✔️ Shift-left testing & early quality involvement ⏩
+✔️ Performance & security basics ⚡🔐
+✔️ Test metrics & quality reporting 📊
+✔️ Collaboration with Dev, Product & Business 🤝
+
+📌 Focus: Quality across the entire product, not just testing
+
+**🔁 Final Thought**
+QA is not just about **manual vs automation**.
+It's about **continuous learning, adaptability, and quality mindset** 🌱
+
+📍 From **Tester ➝ Automator ➝ Quality Engineer**
+The journey is real — and worth it ✔️
+
+#QualityAssurance #ManualTesting #AutomationTesting #QAEngineer #SoftwareTesting #CareerGrowth`
+  },
+  {
+    title: "What if there is no QA in a project?",
+    summary: "Why quality is planned, tested and protected — never accidental.",
+    impressions: 25358,
+    url: "",
+    text: `❓ What if there is NO QA present in a project?
+
+Imagine releasing software without QA…
+
+🚨 Bugs reach production
+🚨 Customers face crashes & data issues
+🚨 Business reputation takes a hit
+🚨 Developers spend more time fixing than building
+🚨 Costs increase due to late defect discovery
+
+QA is not just about finding bugs.
+It's about:
+✔️ Ensuring user trust
+✔️ Protecting business value
+✔️ Improving product quality
+✔️ Supporting faster & safer releases
+
+Without QA, software becomes a risk, not a solution.
+
+👉 QA acts as the gatekeeper of quality, the voice of the user, and the safety net before release.
+
+**Quality is never accidental — it is planned, tested, and protected.**
+
+#QualityAssurance #SoftwareTesting #QA #ProductQuality #TestingLife #TechThoughts`
+  },
+  {
+    title: "Developer says \"not an issue\", QA says \"critical\"",
+    summary: "Handling severity disagreements with evidence and business impact.",
+    impressions: 19310,
+    url: "",
+    text: `🚨 Developer says: "This is not an issue." 🧪 QA says: "This is a critical issue."
+
+So… what should QA do in this situation? 🤔
+
+This conflict happens in almost every project.
+But how QA handles it defines their maturity, credibility, and leadership.
+
+**✅ How QA should behave 👇**
+
+**🔹 Stay calm & professional**
+QA's job is not to argue — it's to protect product quality.
+
+**🔹 Explain with evidence**
+Show clear reproduction steps 📝, screenshots / videos 📸, and logs, API responses, or data impact 📊.
+Facts > Opinions.
+
+**🔹 Talk in business impact, not emotions**
+Instead of ❌ "This is a big bug"
+Say ✅ "This can impact user data, revenue, or production stability."
+
+**🔹 Understand the developer's perspective**
+Sometimes it's expected behavior, low technical risk, or a design decision.
+Listen first 👂
+
+**🔹 Align on severity & priority**
+Severity = Impact on user/system
+Priority = When it should be fixed
+Both should be agreed, not assumed.
+
+**🔹 Escalate smartly (only if needed)**
+If no agreement, share facts with the Product Owner / Manager.
+Keep it solution-focused, not personal.
+
+**💡 Remember**
+👉 QA is not here to prove developers wrong
+👉 QA is here to make the product right
+
+Strong QA builds trust, not tension 🤝
+
+💬 Have you faced this situation? How did you handle it? Let's discuss 👇
+
+#QA #SoftwareTesting #QualityAssurance #BugLife #DeveloperVsQA #TeamWork #AgileTesting`
+  },
+  {
+    title: "How QA evolves year by year, from junior to lead",
+    summary: "The shift from finding bugs to building trust.",
+    impressions: 11705,
+    url: "",
+    text: `📈 How QA Evolves Year by Year: From Junior to QA Lead
+
+Quality Assurance isn't just a role — it's a journey of mindset, skills, and responsibility.
+
+**🔹 Junior QA**
+Focus on fundamentals: understanding requirements, writing clear test cases, executing manual tests, and learning how users actually interact with the product. Curiosity matters more than speed.
+
+**🔹 Mid-level QA**
+You start thinking beyond test cases. You question edge cases, take ownership of features, learn automation & API testing, collaborate closely with developers, and contribute to sprint-level quality.
+
+**🔹 Senior QA**
+Quality becomes strategic. You design test frameworks, improve CI/CD pipelines, mentor juniors, and make risk-based testing decisions that protect business and users.
+
+**🔹 QA Lead**
+Your role shifts from "testing" to enabling quality. You define processes, align QA with product goals, drive ethical and user-focused testing, and build strong, confident QA teams.
+
+🌱 **Key lesson:** As QA grows, the focus moves from finding bugs to building trust.
+
+Continuous learning, collaboration, and responsibility are what truly evolve a QA professional — year after year.
+
+#QualityAssurance #QACareer #SoftwareTesting #AutomationTesting #QAEngineer #TechCareers #Leadership`
+  },
+  {
+    title: "Test scenario vs test case vs test script",
+    summary: "What to test, how to test it, and how it runs automatically.",
+    impressions: 5126,
+    url: "",
+    text: `🤔 Difference between Test Scenario, Test Case & Test Script
+
+Many times during testing discussions, these three terms are used interchangeably.
+But in reality, they serve **different purposes** 🎯
+
+**🔹 Test Scenario**
+This is a high-level idea of what needs to be tested.
+It answers the question: **"What should we test?"**
+📝 Example: Verify login functionality.
+
+**🔹 Test Case**
+This goes one level deeper.
+It explains **how to test** a scenario with clear steps, test data, and expected results.
+📋 Example: Enter valid username and password → click Login → user should be redirected to the dashboard.
+
+**🔹 Test Script**
+This is the automated version of test cases.
+It's written in code using tools like **Selenium, Cypress, Playwright**, etc., so tests can run automatically without manual effort 🤖
+
+**📌 In short:**
+🧠 Test Scenario → **What to test**
+🛠️ Test Case → **How to test**
+⚙️ Test Script → **Automated execution**
+
+Understanding this difference helps in **better planning**, **clear communication**, and **smoother collaboration** between manual and automation teams 🤝
+
+Quality always starts with **clarity** ✔️
+
+#SoftwareTesting #QA #TestScenario #TestCase #AutomationTesting #TestingBasics`
+  },
+  {
+    title: "What is exploratory testing, and why every QA should learn it",
+    summary: "Designing, executing and learning at the same time.",
+    impressions: 1177,
+    url: "",
+    text: `🔍 What is Exploratory Testing & Why Every QA Should Learn It
+
+Exploratory Testing is **not about following pre-written test cases**.
+It's about **exploring the application**, learning how it behaves, and testing it at the same time 🧠
+
+In simple terms:
+👉 You design tests, execute them, and learn from the results **simultaneously**.
+
+**🔹 What is Exploratory Testing?**
+It's a testing approach where QA uses **experience, intuition, and curiosity** to find issues that structured test cases often miss.
+No fixed steps. No strict scripts. Just smart testing with a clear goal 🎯
+
+**🔹 Why QA Should Learn Exploratory Testing?**
+
+**1️⃣ Finds real-world bugs 🐞**
+Exploratory testing mimics how actual users interact with the product, helping uncover critical and edge-case issues.
+
+**2️⃣ Improves product understanding 🧩**
+The more you explore, the better you understand workflows, risks, and hidden dependencies.
+
+**3️⃣ Saves time ⏱️**
+Perfect for early builds, frequent changes, and tight deadlines where writing detailed test cases may slow things down.
+
+**4️⃣ Boosts critical thinking 🧠**
+It sharpens a tester's analytical and problem-solving skills.
+
+**5️⃣ Adds value beyond test cases ⭐**
+Even with automation and detailed documentation, exploratory testing brings a human touch that tools can't replace.
+
+**📌 Final Thought**
+Automation executes.
+Test cases validate.
+**Exploratory testing thinks.**
+
+A strong QA doesn't just follow steps — they **ask questions, challenge assumptions, and explore the product** 🔎
+
+#ExploratoryTesting #QualityAssurance #QA #SoftwareTesting #TestingMindset #ManualTesting`
+  },
+  {
+    title: "Why a developer can't automatically become a QA",
+    summary: "Two roles, two mindsets — and why both matter.",
+    impressions: 1166,
+    url: "",
+    text: `🤔 Why a Developer Cannot Automatically Become a QA
+
+This might sound controversial, but it's an important discussion 👇
+Being a great **Developer** does not automatically make someone a great **QA**.
+
+And that's okay — because **both roles require different mindsets** 🧠
+
+**🔍 Different Mindsets, Different Goals**
+
+**👨‍💻 Developer mindset**
+✔️ Build features
+✔️ Make the code work
+✔️ Think: "How do I implement this?"
+
+**🧪 QA mindset**
+✔️ Break features
+✔️ Question assumptions
+✔️ Think: "What can go wrong?"
+
+Writing code and **challenging code** are very different skills.
+
+**⚠️ Why Devs Often Struggle in a QA Role**
+
+**1️⃣ Emotional attachment to code 💙**
+Developers naturally trust what they build. QA must doubt everything — even when it "looks fine".
+
+**2️⃣ Happy-path thinking 🚗**
+Devs focus on expected behavior. QA focuses on edge cases, misuse, and real-world chaos.
+
+**3️⃣ Business & user perspective 👤**
+QA looks beyond code: user experience, business impact, risk & severity.
+
+**4️⃣ Patience & observation 🕵️**
+QA requires deep observation, repetition, and curiosity — not just logic.
+
+**5️⃣ Communication over implementation 🗣️**
+QA spends more time explaining impact, negotiating severity, and aligning with product & business.
+
+**📌 Important Clarification**
+This does **NOT** mean developers can't test or can't learn QA.
+It means QA is a **specialized skill**, and QA is more than "just testing".
+
+**✅ Final Thought**
+Developers build the product.
+QA protects the product.
+
+Both roles are equally important — and when they **respect each other's strengths**, quality truly improves 🤝
+
+#QualityAssurance #SoftwareTesting #QA #Developers #TestingMindset #ProductQuality`
+  },
+  {
+    title: "Scaling API quality with Postman, Git, Jenkins and Allure",
+    summary: "The architecture of my continuous API automation framework.",
+    impressions: 596,
+    url: "",
+    text: `🚀 Scaling API Quality: How I Built a Continuous API Automation Framework with Postman, Git, Jenkins, and Allure
+
+API testing shouldn't just be about manually hitting "Send." As applications grow, maintaining an automated, scalable regression suite is critical.
+
+I recently designed a modular API Automation Framework that transforms Postman collections into a fully automated, CI/CD-integrated testing engine.
+
+Here is how the architecture works:
+
+**🎯 1. Structured Test Automation (Postman)**
+**Modular Architecture:** Organised APIs into strict hierarchies using folders and subfolders to mimic the application's domain modules (e.g., Auth, Profile, Cart, Orders).
+**Pre-Request Scripts:** Handled pre-conditions, dynamic environment variables, and setup logic directly under the request script configuration.
+**Post-Response Scripts:** Implemented robust test assertions — covering status code verification, basic data structures, field validations, and deep data type schema testing.
+
+**🔄 2. Version Control & Collaboration (Git)**
+The entire Postman collection is maintained under version control.
+Any edits, additions, or deletions of endpoints and test cases are committed and pushed to a Git repository, ensuring proper code review and a single source of truth.
+
+**⚙️ 3. Continuous Integration & Execution (Jenkins)**
+Triggered seamlessly via a continuous pipeline, Jenkins automatically pulls the latest version of the collection upon changes.
+The tests are executed programmatically via the command line, ensuring rapid execution in isolation.
+
+**📊 4. Rich Analytical Reporting (Allure Report)**
+Test outcomes are funnelled directly into Allure Reporting inside the Jenkins control panel.
+This grants the team granular visibility into pass/fail trends, defect categories, response times, and request/response payloads for deep debugging.
+
+By taking tests out of siloed local environments and pushing them into a structured CI/CD loop, we've drastically cut down regression time and amplified deployment confidence.
+
+How are you managing and running your API automation suites at scale? Let's discuss in the comments! 👇
+
+#APITesting #SoftwareTesting #Automation #Postman #Jenkins #CICD #AllureReporting #QAEngineering #DevOps`
+  },
+  {
+    title: "Why QA never forgets ethics in an organization",
+    summary: "A release-night scenario where quality isn't negotiable.",
+    impressions: 532,
+    url: "",
+    text: `🔍 Why QA Never Forgets Ethics in an Organization
+
+In the fast-paced world of software delivery, deadlines are tight, releases are frequent, and pressure is constant.
+Yet one role consistently stands firm on ethics — Quality Assurance.
+
+🧠 Why? Because QA is the voice of truth.
+
+**📌 A Real-Life QA Scenario**
+Imagine this:
+A release is scheduled for tonight 🚀
+Everything looks "almost fine."
+
+During final regression, QA finds a critical bug:
+❌ Payment gets deducted
+❌ But the order is not created
+
+The product owner says:
+👉 "It's rare. Let's fix it in the next sprint."
+The deadline is tight. Marketing campaigns are already live.
+
+QA has two choices:
+1️⃣ Stay silent and let users lose money
+2️⃣ Speak up, raise the issue, and delay the release
+
+💡 **Ethical QA chooses option 2.**
+
+**⚖️ Because for QA, ethics mean:**
+✔️ Users should never pay for our shortcuts
+✔️ Data, money, and trust are not "minor issues"
+✔️ Quality is not negotiable under pressure
+
+🛡️ QA protects more than software — they protect users 👥, brand reputation 🏢, compliance & trust 📜, and long-term product success 💡
+
+🚦 When ethics are compromised, quality collapses.
+And when quality collapses, users lose trust.
+
+That's why QA doesn't forget ethics —
+**because quality without ethics is just speed without direction.**
+
+💬 Respect your QA. They're not blockers — they're guardians.
+
+#QualityAssurance #SoftwareTesting #EthicsInTech #QACommunity #RealLifeTesting #ProductQuality #Trust`
+  }
+];
+window.LINKEDIN_FOLLOWERS = "1,200+";
+</script>
 </head>
 <body>
 
@@ -312,11 +721,20 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
     <h2>My QA journey</h2>
     <p class="intro">Four organizations, one direction: from validating banking transactions by hand to owning a fully automated, CI/CD-driven API quality pipeline.</p>
 
+        <div class="worked" aria-label="Companies I have worked with">
+      <span class="worked-label">Where I've worked</span>
+      <a class="worked-co" href="#job-0"><div class="logo"><span aria-hidden="true">EX</span><img src="https://www.elyxdigital.com/images/logo.svg" alt="ELYX Digital logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div><b>ELYX Digital</b></a>
+      <a class="worked-co" href="#job-1"><div class="logo"><span aria-hidden="true">DQ</span><img src="https://icedq.com/wp-content/uploads/2025/01/icedq-logo.svg" alt="iceDQ logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div><b>iceDQ</b></a>
+      <a class="worked-co" href="#job-2"><div class="logo"><span aria-hidden="true">6S</span><img src="https://www.6simplex.co.in/assets/6SimplexLogononame2.png" alt="6Simplex logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div><b>6Simplex</b></a>
+      <a class="worked-co" href="#job-3"><div class="logo no-img"><span aria-hidden="true">YS</span></div><b>Yalamanchili</b></a>
+    </div>
+
     <div class="timeline">
-      <article class="job">
+      <article class="job" id="job-0">
         <div class="when"><b>2025</b><span>Dec 2025 – Present</span></div>
         <div class="card current">
           <header>
+            <div class="logo"><span aria-hidden="true">EX</span><img src="https://www.elyxdigital.com/images/logo.svg" alt="ELYX Digital logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div>
             <div>
               <h3>Software Test Engineer</h3>
               <div class="co-name">ELYX Digital</div>
@@ -338,10 +756,11 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
         </div>
       </article>
 
-      <article class="job">
+      <article class="job" id="job-1">
         <div class="when"><b>2024</b><span>Feb 2024 – Dec 2025</span></div>
         <div class="card">
           <header>
+            <div class="logo"><span aria-hidden="true">DQ</span><img src="https://icedq.com/wp-content/uploads/2025/01/icedq-logo.svg" alt="iceDQ logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div>
             <div>
               <h3>Test Engineer</h3>
               <div class="co-name">iceDQ (Torana Inc.)</div>
@@ -359,10 +778,11 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
         </div>
       </article>
 
-      <article class="job">
+      <article class="job" id="job-2">
         <div class="when"><b>2021</b><span>Dec 2021 – Jan 2024</span></div>
         <div class="card">
           <header>
+            <div class="logo"><span aria-hidden="true">6S</span><img src="https://www.6simplex.co.in/assets/6SimplexLogononame2.png" alt="6Simplex logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('no-img');this.remove()"></div>
             <div>
               <h3>Software Test Engineer</h3>
               <div class="co-name">6Simplex Software Solutions Pvt Ltd</div>
@@ -379,10 +799,11 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
         </div>
       </article>
 
-      <article class="job">
+      <article class="job" id="job-3">
         <div class="when"><b>2020</b><span>Feb 2020 – Oct 2021</span></div>
         <div class="card">
           <header>
+            <div class="logo no-img"><span aria-hidden="true">YS</span></div>
             <div>
               <h3>Software Tester</h3>
               <div class="co-name">Yalamanchili School of Learning Pvt Ltd</div>
@@ -490,23 +911,8 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
   <div class="wrap">
     <h2>Sharing what I've learned</h2>
     <p class="intro">I write on LinkedIn about the QA mindset, careers and ethics — a few posts have reached tens of thousands of testers.</p>
-    <div class="posts">
-      <button class="post" type="button" data-post="roadmap"><div><h3>Roadmap of QA: from manual to automation to quality engineer</h3><p>The three stages most testers grow through, and what to learn at each.</p><span class="read">Read post</span></div><div class="views">38K<small>impressions</small></div></button>
-      <button class="post" type="button" data-post="noqa"><div><h3>What if there is no QA in a project?</h3><p>Why quality is planned, tested and protected — never accidental.</p><span class="read">Read post</span></div><div class="views">25K<small>impressions</small></div></button>
-      <button class="post" type="button" data-post="notissue"><div><h3>Developer says "not an issue", QA says "critical"</h3><p>Handling severity disagreements with evidence and business impact.</p><span class="read">Read post</span></div><div class="views">19K<small>impressions</small></div></button>
-      <button class="post" type="button" data-post="evolve"><div><h3>How QA evolves year by year, from junior to lead</h3><p>The shift from finding bugs to building trust.</p><span class="read">Read post</span></div><div class="views">11.7K<small>impressions</small></div></button>
-      <button class="post" type="button" data-post="framework"><div><h3>Scaling API quality with Postman, Git, Jenkins and Allure</h3><p>The architecture of my continuous API automation framework.</p><span class="read">Read post</span></div><div class="views">596<small>impressions</small></div></button>
-    </div>
-    <details class="more-posts">
-      <summary>Show 4 more posts</summary>
-      <div class="posts">
-        <button class="post" type="button" data-post="scenario"><div><h3>Test scenario vs test case vs test script</h3><p>What to test, how to test it, and how it runs automatically.</p><span class="read">Read post</span></div><div class="views">5.1K<small>impressions</small></div></button>
-        <button class="post" type="button" data-post="exploratory"><div><h3>What is exploratory testing, and why every QA should learn it</h3><p>Designing, executing and learning at the same time.</p><span class="read">Read post</span></div><div class="views">1.2K<small>impressions</small></div></button>
-        <button class="post" type="button" data-post="devqa"><div><h3>Why a developer can't automatically become a QA</h3><p>Two roles, two mindsets — and why both matter.</p><span class="read">Read post</span></div><div class="views">1.2K<small>impressions</small></div></button>
-        <button class="post" type="button" data-post="ethics"><div><h3>Why QA never forgets ethics in an organization</h3><p>A release-night scenario where quality isn't negotiable.</p><span class="read">Read post</span></div><div class="views">532<small>impressions</small></div></button>
-      </div>
-    </details>
-    <p class="reach">100K+ total impressions · 1,200+ followers on LinkedIn</p>
+    <div class="posts" id="top-posts" aria-live="polite"></div>
+    <p class="reach" id="reach"></p>
 
     <dialog class="reader" id="reader" aria-labelledby="reader-title">
       <div class="reader-head">
@@ -518,149 +924,6 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
       <div class="reader-foot"><span id="reader-stats"></span><a href="https://www.linkedin.com/in/tapshyu-ganvir-008aa1152/recent-activity/all/" target="_blank" rel="noopener">View on LinkedIn</a></div>
     </dialog>
 
-    <template id="post-roadmap">
-      <h3 id="reader-title">🛣️ Roadmap of QA: From Manual ➝ Automation ➝ Quality Engineer 🚀</h3>
-      <p>A QA career doesn't stop at manual testing — it <strong>evolves</strong>. Here's a simple roadmap many testers follow in real projects 👇</p>
-      <h4>🔹 Step 1: Manual QA Foundation 🧪</h4>
-      <p>This is where every strong QA journey begins.</p>
-      <ul><li>Understanding requirements &amp; user stories</li><li>Writing test scenarios &amp; test cases</li><li>Functional, regression &amp; exploratory testing</li><li>Bug reporting &amp; tracking (JIRA, etc.)</li><li>Basics of SDLC &amp; Agile 🔄</li></ul>
-      <p>📌 Focus: <em>Think like a user, break the system</em></p>
-      <h4>🔹 Step 2: Move to Automation QA 🤖</h4>
-      <p>Once testing concepts are clear, automation becomes easier.</p>
-      <ul><li>Learn a programming language (Python / Java / JS) 💻</li><li>Automation tools (Selenium, Playwright, Cypress)</li><li>Frameworks (PyTest, TestNG, BDD)</li><li>API automation (Postman, RestAssured) 🌐</li><li>Version control (Git) &amp; CI/CD basics ⚙️</li></ul>
-      <p>📌 Focus: <em>Automate repetitive tests &amp; improve speed</em></p>
-      <h4>🔹 Step 3: Evolve into a Quality Engineer 🧠</h4>
-      <p>Automation is not the end — <strong>quality ownership</strong> is.</p>
-      <ul><li>Test strategy &amp; test planning</li><li>Shift-left testing &amp; early quality involvement ⏩</li><li>Performance &amp; security basics ⚡🔐</li><li>Test metrics &amp; quality reporting 📊</li><li>Collaboration with Dev, Product &amp; Business 🤝</li></ul>
-      <p>📌 Focus: <em>Quality across the entire product, not just testing</em></p>
-      <h4>🔁 Final Thought</h4>
-      <p>QA is not just about <strong>manual vs automation</strong>. It's about <strong>continuous learning, adaptability, and quality mindset</strong> 🌱</p>
-      <p>📍 From <strong>Tester ➝ Automator ➝ Quality Engineer</strong> — the journey is real, and worth it ✔️</p>
-      <p class="tagline">#QualityAssurance #ManualTesting #AutomationTesting #QAEngineer #SoftwareTesting #CareerGrowth</p>
-    </template>
-
-    <template id="post-noqa">
-      <h3 id="reader-title">❓ What if there is NO QA present in a project?</h3>
-      <p>Imagine releasing software without QA…</p>
-      <ul><li>🚨 Bugs reach production</li><li>🚨 Customers face crashes &amp; data issues</li><li>🚨 Business reputation takes a hit</li><li>🚨 Developers spend more time fixing than building</li><li>🚨 Costs increase due to late defect discovery</li></ul>
-      <p>QA is not just about finding bugs. It's about:</p>
-      <ul><li>✔️ Ensuring user trust</li><li>✔️ Protecting business value</li><li>✔️ Improving product quality</li><li>✔️ Supporting faster &amp; safer releases</li></ul>
-      <p>Without QA, software becomes a risk, not a solution.</p>
-      <p>👉 QA acts as the gatekeeper of quality, the voice of the user, and the safety net before release.</p>
-      <p><strong>Quality is never accidental — it is planned, tested, and protected.</strong></p>
-      <p class="tagline">#QualityAssurance #SoftwareTesting #QA #ProductQuality #TestingLife #TechThoughts</p>
-    </template>
-
-    <template id="post-notissue">
-      <h3 id="reader-title">🚨 Developer says: "This is not an issue." 🧪 QA says: "This is a critical issue."</h3>
-      <p>So… what should QA do in this situation? 🤔 This conflict happens in almost every project. But how QA handles it defines their maturity, credibility, and leadership.</p>
-      <h4>✅ How QA should behave 👇</h4>
-      <p><strong>🔹 Stay calm &amp; professional</strong><br>QA's job is not to argue — it's to protect product quality.</p>
-      <p><strong>🔹 Explain with evidence</strong><br>Show clear reproduction steps 📝, screenshots / videos 📸, and logs, API responses, or data impact 📊. Facts &gt; Opinions.</p>
-      <p><strong>🔹 Talk in business impact, not emotions</strong><br>Instead of ❌ "This is a big bug", say ✅ "This can impact user data, revenue, or production stability."</p>
-      <p><strong>🔹 Understand the developer's perspective</strong><br>Sometimes it's expected behavior, low technical risk, or a design decision. Listen first 👂</p>
-      <p><strong>🔹 Align on severity &amp; priority</strong><br>Severity = impact on user/system. Priority = when it should be fixed. Both should be agreed, not assumed.</p>
-      <p><strong>🔹 Escalate smartly (only if needed)</strong><br>If there's no agreement, share facts with the Product Owner / Manager. Keep it solution-focused, not personal.</p>
-      <h4>💡 Remember</h4>
-      <p>👉 QA is not here to prove developers wrong<br>👉 QA is here to make the product right</p>
-      <p>Strong QA builds trust, not tension 🤝</p>
-      <p>💬 Have you faced this situation? How did you handle it?</p>
-      <p class="tagline">#QA #SoftwareTesting #QualityAssurance #BugLife #DeveloperVsQA #TeamWork #AgileTesting</p>
-    </template>
-
-    <template id="post-evolve">
-      <h3 id="reader-title">📈 How QA Evolves Year by Year: From Junior to QA Lead</h3>
-      <p>Quality Assurance isn't just a role — it's a journey of mindset, skills, and responsibility.</p>
-      <p><strong>🔹 Junior QA</strong><br>Focus on fundamentals: understanding requirements, writing clear test cases, executing manual tests, and learning how users actually interact with the product. Curiosity matters more than speed.</p>
-      <p><strong>🔹 Mid-level QA</strong><br>You start thinking beyond test cases. You question edge cases, take ownership of features, learn automation &amp; API testing, collaborate closely with developers, and contribute to sprint-level quality.</p>
-      <p><strong>🔹 Senior QA</strong><br>Quality becomes strategic. You design test frameworks, improve CI/CD pipelines, mentor juniors, and make risk-based testing decisions that protect business and users.</p>
-      <p><strong>🔹 QA Lead</strong><br>Your role shifts from "testing" to enabling quality. You define processes, align QA with product goals, drive ethical and user-focused testing, and build strong, confident QA teams.</p>
-      <p>🌱 <strong>Key lesson:</strong> As QA grows, the focus moves from finding bugs to building trust.</p>
-      <p>Continuous learning, collaboration, and responsibility are what truly evolve a QA professional — year after year.</p>
-      <p class="tagline">#QualityAssurance #QACareer #SoftwareTesting #AutomationTesting #QAEngineer #TechCareers #Leadership</p>
-    </template>
-
-    <template id="post-framework">
-      <h3 id="reader-title">🚀 Scaling API Quality: How I Built a Continuous API Automation Framework with Postman, Git, Jenkins, and Allure</h3>
-      <p>API testing shouldn't just be about manually hitting "Send." As applications grow, maintaining an automated, scalable regression suite is critical.</p>
-      <p>I recently designed a modular API Automation Framework that transforms Postman collections into a fully automated, CI/CD-integrated testing engine. Here is how the architecture works:</p>
-      <h4>🎯 1. Structured Test Automation (Postman)</h4>
-      <ul><li><strong>Modular architecture:</strong> organised APIs into strict hierarchies using folders and subfolders to mimic the application's domain modules (e.g., Auth, Profile, Cart, Orders).</li><li><strong>Pre-request scripts:</strong> handled pre-conditions, dynamic environment variables, and setup logic directly under the request script configuration.</li><li><strong>Post-response scripts:</strong> implemented robust test assertions — covering status code verification, basic data structures, field validations, and deep data type schema testing.</li></ul>
-      <h4>🔄 2. Version Control &amp; Collaboration (Git)</h4>
-      <p>The entire Postman collection is maintained under version control. Any edits, additions, or deletions of endpoints and test cases are committed and pushed to a Git repository, ensuring proper code review and a single source of truth.</p>
-      <h4>⚙️ 3. Continuous Integration &amp; Execution (Jenkins)</h4>
-      <p>Triggered seamlessly via a continuous pipeline, Jenkins automatically pulls the latest version of the collection upon changes. The tests are executed programmatically via the command line, ensuring rapid execution in isolation.</p>
-      <h4>📊 4. Rich Analytical Reporting (Allure Report)</h4>
-      <p>Test outcomes are funnelled directly into Allure Reporting inside the Jenkins control panel. This grants the team granular visibility into pass/fail trends, defect categories, response times, and request/response payloads for deep debugging.</p>
-      <p>By taking tests out of siloed local environments and pushing them into a structured CI/CD loop, we've drastically cut down regression time and amplified deployment confidence.</p>
-      <p><em>How are you managing and running your API automation suites at scale? Let's discuss in the comments! 👇</em></p>
-      <p class="tagline">#APITesting #SoftwareTesting #Automation #Postman #Jenkins #CICD #AllureReporting #QAEngineering #DevOps</p>
-    </template>
-
-    <template id="post-scenario">
-      <h3 id="reader-title">🤔 Difference between Test Scenario, Test Case &amp; Test Script</h3>
-      <p>Many times during testing discussions, these three terms are used interchangeably. But in reality, they serve <strong>different purposes</strong> 🎯</p>
-      <p><strong>🔹 Test Scenario</strong><br>A <em>high-level idea</em> of what needs to be tested. It answers the question: <strong>"What should we test?"</strong><br>📝 Example: Verify login functionality.</p>
-      <p><strong>🔹 Test Case</strong><br>This goes one level deeper. It explains <strong>how to test</strong> a scenario with clear steps, test data, and expected results.<br>📋 Example: Enter valid username and password → click Login → user should be redirected to the dashboard.</p>
-      <p><strong>🔹 Test Script</strong><br>The <em>automated version</em> of test cases. It's written in code using tools like <strong>Selenium, Cypress, Playwright</strong>, etc., so tests can run automatically without manual effort 🤖</p>
-      <h4>📌 In short</h4>
-      <ul><li>🧠 Test Scenario → <strong>What to test</strong></li><li>🛠️ Test Case → <strong>How to test</strong></li><li>⚙️ Test Script → <strong>Automated execution</strong></li></ul>
-      <p>Understanding this difference helps in <strong>better planning</strong>, <strong>clear communication</strong>, and <strong>smoother collaboration</strong> between manual and automation teams 🤝</p>
-      <p>Quality always starts with <strong>clarity</strong> ✔️</p>
-      <p class="tagline">#SoftwareTesting #QA #TestScenario #TestCase #AutomationTesting #TestingBasics</p>
-    </template>
-
-    <template id="post-exploratory">
-      <h3 id="reader-title">🔍 What is Exploratory Testing &amp; Why Every QA Should Learn It</h3>
-      <p>Exploratory testing is <strong>not about following pre-written test cases</strong>. It's about <strong>exploring the application</strong>, learning how it behaves, and testing it at the same time 🧠</p>
-      <p>In simple terms: 👉 you design tests, execute them, and learn from the results <strong>simultaneously</strong>.</p>
-      <h4>🔹 What is Exploratory Testing?</h4>
-      <p>It's a testing approach where QA uses <strong>experience, intuition, and curiosity</strong> to find issues that structured test cases often miss. No fixed steps. No strict scripts. Just smart testing with a clear goal 🎯</p>
-      <h4>🔹 Why should QA learn it?</h4>
-      <p><strong>1️⃣ Finds real-world bugs 🐞</strong> — it mimics how actual users interact with the product, uncovering critical and edge-case issues.</p>
-      <p><strong>2️⃣ Improves product understanding 🧩</strong> — the more you explore, the better you understand workflows, risks, and hidden dependencies.</p>
-      <p><strong>3️⃣ Saves time ⏱️</strong> — perfect for early builds, frequent changes, and tight deadlines where detailed test cases may slow things down.</p>
-      <p><strong>4️⃣ Boosts critical thinking 🧠</strong> — it sharpens a tester's analytical and problem-solving skills.</p>
-      <p><strong>5️⃣ Adds value beyond test cases ⭐</strong> — even with automation and documentation, exploratory testing brings a human touch tools can't replace.</p>
-      <h4>📌 Final Thought</h4>
-      <p>Automation executes. Test cases validate. <strong>Exploratory testing thinks.</strong></p>
-      <p>A strong QA doesn't just follow steps — they <strong>ask questions, challenge assumptions, and explore the product</strong> 🔎</p>
-      <p class="tagline">#ExploratoryTesting #QualityAssurance #QA #SoftwareTesting #TestingMindset #ManualTesting</p>
-    </template>
-
-    <template id="post-devqa">
-      <h3 id="reader-title">🤔 Why a Developer Cannot Automatically Become a QA</h3>
-      <p>This might sound controversial, but it's an important discussion 👇 Being a great <strong>developer</strong> does <em>not</em> automatically make someone a great <strong>QA</strong> — and that's okay, because <strong>both roles require different mindsets</strong> 🧠</p>
-      <h4>🔍 Different mindsets, different goals</h4>
-      <p><strong>👨‍💻 Developer mindset:</strong> build features, make the code work, and think <em>"How do I implement this?"</em></p>
-      <p><strong>🧪 QA mindset:</strong> break features, question assumptions, and think <em>"What can go wrong?"</em></p>
-      <p>Writing code and <strong>challenging code</strong> are very different skills.</p>
-      <h4>⚠️ Why devs often struggle in a QA role</h4>
-      <ul><li><strong>1️⃣ Emotional attachment to code 💙</strong> — developers naturally trust what they build; QA must doubt everything, even when it "looks fine".</li><li><strong>2️⃣ Happy-path thinking 🚗</strong> — devs focus on expected behavior; QA focuses on edge cases, misuse, and real-world chaos.</li><li><strong>3️⃣ Business &amp; user perspective 👤</strong> — QA looks beyond code at user experience, business impact, and risk &amp; severity.</li><li><strong>4️⃣ Patience &amp; observation 🕵️</strong> — QA requires deep observation, repetition, and curiosity, not just logic.</li><li><strong>5️⃣ Communication over implementation 🗣️</strong> — QA spends more time explaining impact, negotiating severity, and aligning with product &amp; business.</li></ul>
-      <h4>📌 Important clarification</h4>
-      <p>This does <strong>not</strong> mean ❌ developers can't test or ❌ developers can't learn QA. It means ✅ QA is a <strong>specialized skill</strong>, and ✅ QA is more than "just testing".</p>
-      <h4>✅ Final Thought</h4>
-      <p>Developers build the product. QA protects the product. Both roles are equally important — and when they <strong>respect each other's strengths</strong>, quality truly improves 🤝</p>
-      <p class="tagline">#QualityAssurance #SoftwareTesting #QA #Developers #TestingMindset #ProductQuality</p>
-    </template>
-
-    <template id="post-ethics">
-      <h3 id="reader-title">🔍 Why QA Never Forgets Ethics in an Organization</h3>
-      <p>In the fast-paced world of software delivery, deadlines are tight, releases are frequent, and pressure is constant. Yet one role consistently stands firm on ethics — Quality Assurance.</p>
-      <p>🧠 Why? Because QA is the voice of truth.</p>
-      <h4>📌 A real-life QA scenario</h4>
-      <p>Imagine this: a release is scheduled for tonight 🚀 and everything looks "almost fine." During final regression, QA finds a critical bug:</p>
-      <ul><li>❌ Payment gets deducted</li><li>❌ But the order is not created</li></ul>
-      <p>The product owner says: 👉 "It's rare. Let's fix it in the next sprint." The deadline is tight. Marketing campaigns are already live.</p>
-      <p>QA has two choices:<br>1️⃣ Stay silent and let users lose money<br>2️⃣ Speak up, raise the issue, and delay the release</p>
-      <p>💡 <strong>Ethical QA chooses option 2.</strong></p>
-      <h4>⚖️ Because for QA, ethics mean</h4>
-      <ul><li>✔️ Users should never pay for our shortcuts</li><li>✔️ Data, money, and trust are not "minor issues"</li><li>✔️ Quality is not negotiable under pressure</li></ul>
-      <p>🛡️ QA protects more than software — they protect 👥 users, 🏢 brand reputation, 📜 compliance &amp; trust, and 💡 long-term product success.</p>
-      <p>🚦 When ethics are compromised, quality collapses. And when quality collapses, users lose trust. That's why QA doesn't forget ethics — <strong>because quality without ethics is just speed without direction.</strong></p>
-      <p>💬 Respect your QA. They're not blockers — they're guardians.</p>
-      <p class="tagline">#QualityAssurance #SoftwareTesting #EthicsInTech #QACommunity #RealLifeTesting #ProductQuality #Trust</p>
-    </template>
   </div>
 </section>
 
@@ -709,19 +972,48 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display
     var t = r.querySelector("[data-current]"); if(t) t.textContent = curLabel;
   }
   // LinkedIn post popup
-  var dlg = document.getElementById("reader"), body = document.getElementById("reader-body"), stats = document.getElementById("reader-stats"), lastBtn = null;
-  document.querySelectorAll(".post[data-post]").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var tpl = document.getElementById("post-" + btn.dataset.post);
-      if(!tpl) return;
-      lastBtn = btn;
-      body.innerHTML = ""; body.appendChild(tpl.content.cloneNode(true)); body.scrollTop = 0;
-      var v = btn.querySelector(".views");
-      stats.textContent = v ? v.firstChild.textContent.trim() + " impressions" : "";
-      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
-      document.body.style.overflow = "hidden";
+  // Rank posts by impressions and show the top 5 (data lives in window.LINKEDIN_POSTS in <head>)
+  var SHOW = 5;
+  var all = (window.LINKEDIN_POSTS || []).filter(function(p){ return p && p.text; });
+  var top = all.slice().sort(function(a,b){ return (+b.impressions||0) - (+a.impressions||0); }).slice(0, SHOW);
+  function fmt(n){ n = +n || 0; if(n >= 1e6) return +(n/1e6).toFixed(1) + "M"; if(n >= 1e4) return Math.round(n/1e3) + "K"; if(n >= 1e3) return +(n/1e3).toFixed(1) + "K"; return String(n); }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function inline(s){ return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+  function render(text){
+    var paras = text.replace(/\r/g,"").trim().split(/\n\s*\n/);
+    var html = '<h3 id="reader-title">' + inline(paras[0].split("\n")[0]) + '</h3>';
+    var rest = paras[0].split("\n").slice(1).join("\n");
+    if(rest.trim()) paras[0] = rest; else paras.shift();
+    paras.forEach(function(p){
+      var isTags = /^(\s*#\S+)+\s*$/.test(p);
+      html += '<p' + (isTags ? ' class="tagline"' : '') + '>' + p.split("\n").map(inline).join("<br>") + '</p>';
     });
+    return html;
+  }
+  var list = document.getElementById("top-posts");
+  top.forEach(function(p){
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "post";
+    btn.innerHTML = '<div><h3>' + esc(p.title || p.text.split("\n")[0]) + '</h3>' + (p.summary ? '<p>' + esc(p.summary) + '</p>' : '') + '<span class="read">Read post</span></div><div class="views">' + fmt(p.impressions) + '<small>impressions</small></div>';
+    btn.addEventListener("click", function(){ openPost(p, btn); });
+    list.appendChild(btn);
   });
+  var total = all.reduce(function(s,p){ return s + (+p.impressions||0); }, 0);
+  var reach = document.getElementById("reach");
+  if(total) reach.textContent = fmt(total) + "+ total impressions across " + all.length + " posts · " + (window.LINKEDIN_FOLLOWERS || "") + " followers on LinkedIn";
+  if(!top.length) list.innerHTML = '<p class="reach">Posts are on <a href="https://www.linkedin.com/in/tapshyu-ganvir-008aa1152/recent-activity/all/" target="_blank" rel="noopener">my LinkedIn</a>.</p>';
+
+  // Popup
+  var dlg = document.getElementById("reader"), body = document.getElementById("reader-body"), stats = document.getElementById("reader-stats"), lastBtn = null;
+  var link = dlg.querySelector(".reader-foot a"), defaultHref = link.href;
+  function openPost(p, btn){
+    lastBtn = btn;
+    body.innerHTML = render(p.text); body.scrollTop = 0;
+    stats.textContent = (+p.impressions||0).toLocaleString("en-IN") + " impressions";
+    link.href = p.url || defaultHref;
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+    document.body.style.overflow = "hidden";
+  }
   function closeDlg(){ if(dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
   dlg.querySelector("[data-close]").addEventListener("click", closeDlg);
   dlg.addEventListener("click", function(e){ if(e.target === dlg) closeDlg(); });
