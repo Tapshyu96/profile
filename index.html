@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapshyu Ganvir · QA Engineer</title>
+<meta name="description" content="Tapshyu Ganvir — Senior API Testing Engineer with 6+ years across API automation, performance testing, CI/CD and data validation.">
+<meta property="og:title" content="Tapshyu Ganvir — Senior API Testing Engineer">
+<meta property="og:description" content="My QA journey: API automation with Postman, Newman, Jenkins & Allure, JMeter performance testing, SQL data validation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318233A'/%3E%3Cpath d='M18 33l9 9 19-20' stroke='%2334C27E' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F5;
+  --sheet:#FFFFFF;
+  --ink:#18233A;
+  --ink-soft:#4A5671;
+  --line:#D5DBE5;
+  --cobalt:#2F54EB;
+  --pass:#1F8A5B;
+  --pass-bg:#E3F4EC;
+  --amber:#B7791F;
+  --console:#18233A;
+  --console-ink:#D9E1F0;
+  --console-dim:#8391AE;
+  --console-pass:#34C27E;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"IBM Plex Sans", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#121A2B; --sheet:#1A2438; --ink:#E8EDF6; --ink-soft:#A3AFC6;
+    --line:#2C3850; --cobalt:#7C97FF; --pass:#4FD18F; --pass-bg:#173A2C; --amber:#E7B45A;
+    --console:#0E1525; --console-ink:#D9E1F0;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--cobalt)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font:700 18px/1 var(--display);color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{flex:none}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--ink-soft);text-decoration:none;font-size:15px;font-weight:500}
+.nav ul a:hover{color:var(--ink)}
+@media (max-width:820px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:40px}.hero{padding:48px 0 64px}}
+.id-row{display:flex;align-items:center;gap:18px;margin:0 0 24px}
+.photo{position:relative;width:92px;height:92px;border-radius:50%;flex:none;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:800 30px/1 var(--display);box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--pass)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+@media (max-width:480px){.photo{width:72px;height:72px;font-size:24px}}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--pass);background:var(--pass-bg);padding:6px 12px;border-radius:999px;margin:0}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--pass);box-shadow:0 0 0 4px color-mix(in srgb,var(--pass) 25%,transparent)}
+h1{font:800 clamp(44px,7vw,84px)/0.95 var(--display);letter-spacing:-0.03em;margin:0 0 18px}
+.role{font:500 clamp(20px,2.4vw,26px)/1.3 var(--display);color:var(--ink-soft);margin:0 0 20px;max-width:30ch}
+.lede{max-width:56ch;margin:0 0 30px;color:var(--ink-soft)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.ghost{color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+
+/* console — the one memorable thing */
+.console{background:var(--console);color:var(--console-ink);border-radius:16px;font:400 14px/1.7 var(--mono);box-shadow:0 30px 60px -30px rgba(24,35,58,.55);overflow:hidden}
+.console-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--console-dim);font-size:13px}
+.console-bar b{width:11px;height:11px;border-radius:50%;background:#3A4763}
+.console-bar span{margin-left:8px}
+.console-body{padding:18px 20px 20px;min-height:340px}
+.console .cmd{color:var(--console-dim)}
+.console .cmd em{font-style:normal;color:var(--console-ink)}
+.run{display:grid;grid-template-columns:22px 1fr auto;gap:6px;align-items:baseline;opacity:0;transition:opacity .25s}
+.run.on{opacity:1}
+.run .mark{color:var(--console-dim)}
+.run.done .mark{color:var(--console-pass)}
+.run .t{color:var(--console-dim);font-size:12.5px}
+.run .co{color:var(--console-dim)}
+.summary{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.15);opacity:0;transition:opacity .4s}
+.summary.on{opacity:1}
+.summary .p{color:var(--console-pass);font-weight:500}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--console-ink);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:480px){.console{font-size:12.5px}.run .t{display:none}.run{grid-template-columns:20px 1fr}}
+
+/* sections */
+section{padding:88px 0;border-top:1px solid var(--line)}
+@media (max-width:600px){section{padding:64px 0}}
+h2{font:700 clamp(32px,4.4vw,48px)/1.05 var(--display);letter-spacing:-0.02em;margin:0 0 14px}
+.intro{color:var(--ink-soft);max-width:60ch;margin:0 0 48px}
+
+/* journey */
+.timeline{position:relative;display:grid;gap:28px}
+.job{display:grid;grid-template-columns:150px 1fr;gap:32px;position:relative}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:10px}}
+.when{padding-top:26px}
+.when b{display:block;font:700 26px/1 var(--display)}
+.when span{font-size:14px;color:var(--ink-soft)}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:18px;padding:26px 28px;position:relative}
+@media (max-width:600px){.card{padding:22px 18px}}
+.card.current{border-color:var(--pass);box-shadow:inset 4px 0 0 var(--pass)}
+.card header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-bottom:6px}
+.card h3{font:700 22px/1.25 var(--display);margin:0}
+.co-name{font-weight:600;color:var(--cobalt)}
+.meta{font-size:14px;color:var(--ink-soft);margin:2px 0 16px}
+.badge{font-size:13px;font-weight:600;color:var(--pass);background:var(--pass-bg);padding:4px 10px;border-radius:999px;height:fit-content}
+.card ul{margin:0 0 18px;padding-left:20px}
+.card li{margin:6px 0}
+.card li::marker{color:var(--pass);content:"✓  "}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:13px;padding:4px 10px;border-radius:7px;background:var(--paper);border:1px solid var(--line);color:var(--ink-soft)}
+
+/* impact as assertions */
+.asserts{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--sheet)}
+@media (max-width:760px){.asserts{grid-template-columns:1fr}}
+.assert{padding:26px 28px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.assert:nth-child(2n){border-right:0}
+.assert:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:760px){.assert{border-right:0}.assert:nth-last-child(2){border-bottom:1px solid var(--line)}}
+.assert code{font:400 13.5px/1.5 var(--mono);color:var(--ink-soft);display:block;margin-bottom:10px;overflow-wrap:anywhere}
+.assert code .ok{color:var(--pass);font-weight:500}
+.assert strong{font:800 40px/1 var(--display);letter-spacing:-0.02em;display:block;margin-bottom:6px}
+.assert p{margin:0;color:var(--ink-soft);font-size:15.5px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.skills{grid-template-columns:1fr}}
+.group{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:22px}
+.group h3{font:700 18px/1.3 var(--display);margin:0 0 4px}
+.group p{margin:0 0 14px;font-size:14.5px;color:var(--ink-soft)}
+.group .tags span{background:transparent}
+.group .tags .hl{border-color:var(--pass);color:var(--pass);font-weight:500}
+.domains{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;color:var(--ink-soft)}
+.domains b{color:var(--ink);font-weight:600;margin-right:4px}
+.domains span{padding:6px 14px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink);font-weight:500;font-size:15px}
+
+/* education */
+.edu{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+.degree{background:var(--ink);color:var(--paper);border-radius:18px;padding:32px;position:relative;overflow:hidden}
+.degree .yrs{font:800 clamp(52px,7vw,80px)/1 var(--display);letter-spacing:-0.03em;opacity:.16;position:absolute;right:20px;bottom:6px;pointer-events:none}
+.degree h3{font:700 26px/1.2 var(--display);margin:0 0 8px;max-width:20ch}
+.degree p{margin:0 0 4px;opacity:.85}
+.side{display:grid;gap:20px}
+.mini{background:var(--sheet);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.mini h3{font:700 18px/1.3 var(--display);margin:0 0 4px}
+.mini p{margin:0;color:var(--ink-soft);font-size:15px}
+
+/* writing */
+.posts{display:grid;gap:12px}
+.post{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:18px 22px;text-decoration:none;color:var(--ink);width:100%;text-align:left;font:inherit;cursor:pointer}
+.post:hover{border-color:var(--cobalt)}
+.post .read{display:block;margin-top:6px;font-size:13.5px;font-weight:600;color:var(--cobalt)}
+.more-posts{margin-top:12px}
+.more-posts summary{cursor:pointer;font-weight:600;color:var(--cobalt);padding:10px 0;list-style:none}
+.more-posts summary::-webkit-details-marker{display:none}
+.more-posts summary::before{content:"+ "}
+.more-posts[open] summary::before{content:"− "}
+
+/* post popup */
+dialog.reader{width:min(720px,calc(100vw - 32px));max-height:min(86vh,900px);padding:0;border:1px solid var(--line);border-radius:18px;background:var(--sheet);color:var(--ink);box-shadow:0 40px 80px -30px rgba(10,16,30,.6);overflow:hidden}
+dialog.reader[open]{display:flex;flex-direction:column;animation:pop .22s ease-out}
+dialog.reader::backdrop{background:rgba(12,18,32,.6);backdrop-filter:blur(3px)}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){dialog.reader[open]{animation:none}}
+.reader-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.avatar{position:relative;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 16px/1 var(--display);flex:none}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+
+/* featured work diagrams */
+.feature{background:var(--sheet);border:1px solid var(--line);border-radius:20px;padding:30px 30px 26px;margin-bottom:24px}
+@media (max-width:600px){.feature{padding:22px 16px}}
+.feature-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px;margin-bottom:6px}
+.feature h3{font:700 24px/1.25 var(--display);margin:0}
+.feature .where{font-size:14px;font-weight:600;color:var(--cobalt)}
+.feature > p{margin:0 0 26px;color:var(--ink-soft);max-width:70ch}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);list-style:none;margin:0;padding:0;counter-reset:s}
+.flow li{position:relative;text-align:center;padding:0 10px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:36px;left:calc(50% + 44px);right:calc(-50% + 44px);height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 11px)}
+.flow li:not(:last-child)::before{content:"";position:absolute;top:31px;right:calc(-50% + 40px);border:6px solid transparent;border-left:8px solid var(--line);border-right:0}
+.ico{width:72px;height:72px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+.ico svg{width:34px;height:34px}
+.flow li.key .ico{background:var(--pass-bg);border-color:var(--pass);color:var(--pass)}
+.flow li.warn .ico{background:color-mix(in srgb,var(--amber) 14%,transparent);border-color:var(--amber);color:var(--amber)}
+.flow b{display:block;font:700 16px/1.3 var(--display);margin-bottom:4px}
+.flow span{display:block;font-size:14px;line-height:1.45;color:var(--ink-soft)}
+@media (max-width:760px){
+  .flow{grid-template-columns:1fr;gap:18px}
+  .flow li{display:grid;grid-template-columns:60px 1fr;gap:4px 14px;text-align:left;padding:0}
+  .flow li .ico{grid-row:span 2;width:60px;height:60px;margin:0;border-radius:16px}
+  .flow li .ico svg{width:28px;height:28px}
+  .flow li b{align-self:end}
+  .flow li:not(:last-child)::after{top:66px;bottom:-16px;left:29px;right:auto;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--line) 0 5px,transparent 5px 9px)}
+  .flow li:not(:last-child)::before{display:none}
+}
+.outcome{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:20px;border-top:1px dashed var(--line)}
+.outcome span{font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;background:var(--pass-bg);color:var(--pass)}
+.who{flex:1;min-width:0}
+.who b{display:block;font-weight:600}
+.who span{display:block;font-size:13px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x{flex:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.x:hover{background:var(--paper)}
+.reader-body{padding:22px 24px;overflow-y:auto;overscroll-behavior:contain}
+.reader-body h3{font:700 22px/1.3 var(--display);margin:0 0 14px}
+.reader-body h4{font:700 16.5px/1.35 var(--body);margin:20px 0 6px}
+.reader-body p{margin:0 0 12px}
+.reader-body ul{margin:0 0 12px;padding-left:22px}
+.reader-body li{margin:4px 0}
+.reader-body .tagline{color:var(--cobalt);font-size:14.5px;margin-top:16px}
+.reader-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+.reader-foot a{font-weight:600;text-decoration:none}
+@media (max-width:600px){.reader-body{padding:18px}.reader-head,.reader-foot{padding:12px 16px}}
+.post h3{font:600 17.5px/1.35 var(--body);margin:0 0 2px}
+.post p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+.post .views{font:700 20px/1 var(--display);text-align:right;white-space:nowrap}
+.post .views small{display:block;font:400 12.5px/1.4 var(--body);color:var(--ink-soft)}
+.reach{margin:22px 0 0;color:var(--ink-soft)}
+
+/* contact */
+.contact,footer{--c-bg:#18233A;--c-fg:#EEF1F5}
+.contact{background:var(--c-bg);color:var(--c-fg);border-top:0}
+.contact h2{max-width:18ch}
+.contact .intro{color:color-mix(in srgb,var(--c-fg) 75%,transparent)}
+.contact .btn{border-color:var(--c-fg)}
+.contact .btn.primary{background:var(--c-fg);color:var(--c-bg)}
+.contact .btn.ghost{color:var(--c-fg)}
+.contact dl{display:flex;flex-wrap:wrap;gap:12px 40px;margin:40px 0 0}
+.contact dt{font-size:13px;opacity:.65}
+.contact dd{margin:0;font-weight:500}
+footer{background:var(--c-bg);color:color-mix(in srgb,var(--c-fg) 60%,transparent);font-size:14px;padding:0 0 32px}
+footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (prefers-color-scheme: dark){
+  .contact,footer{--c-bg:#0B111E;--c-fg:#E8EDF6}
+  .degree{background:#24314C;color:var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="currentColor"/><path d="M18 33l9 9 19-20" stroke="#34C27E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tapshyu Ganvir
+    </a>
+    <ul>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="id-row">
+        <div class="photo"><span aria-hidden="true">TG</span><img src="photo.jpg" alt="Tapshyu Ganvir" onerror="this.remove()"></div>
+        <p class="status"><i></i>Open to QA Lead opportunities</p>
+      </div>
+      <h1>Tapshyu<br>Ganvir</h1>
+      <p class="role">Senior API Testing Engineer with <span data-exp>6+ years</span> making releases boringly reliable.</p>
+      <p class="lede">I build API automation that runs itself — Postman collections versioned in Git, executed by Newman in Jenkins, reported through Allure — and back it with JMeter load tests and SQL-level data validation. Today I'm automating McDonald's order management, menu and pricing checks with Python. QSR retail, enterprise data, fintech, banking, gaming and geospatial products have all shipped through my test suites.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/tapshyu-ganvir-008aa1152/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn ghost" href="#journey">See my journey</a>
+      </div>
+    </div>
+
+    <div class="console" role="img" aria-label="A test run of my career: four roles from 2020 to today, all passed.">
+      <div class="console-bar"><b></b><b></b><b></b><span>career.spec.js</span></div>
+      <div class="console-body" aria-hidden="true">
+        <div class="cmd">$ <em>newman run career.postman_collection.json</em></div>
+        <br>
+        <div class="run" data-delay="0"><span class="mark">○</span><span>Software Tester <span class="co">@ Yalamanchili</span></span><span class="t">1y 9m</span></div>
+        <div class="run" data-delay="1"><span class="mark">○</span><span>Software Test Engineer <span class="co">@ 6Simplex</span></span><span class="t">2y 2m</span></div>
+        <div class="run" data-delay="2"><span class="mark">○</span><span>Test Engineer <span class="co">@ iceDQ</span></span><span class="t">1y 11m</span></div>
+        <div class="run" data-delay="3"><span class="mark">○</span><span>Software Test Engineer <span class="co">@ ELYX Digital</span></span><span class="t" data-current>running</span></div>
+        <div class="summary">
+          <div><span class="p">4 passed</span>, 0 failed, 0 skipped</div>
+          <div>APIs automated: <span class="p">150+</span> &nbsp;·&nbsp; defects caught: <span class="p">120+</span></div>
+          <div>Total experience: <span class="p" data-exp>6+ years</span></div>
+          <div style="margin-top:8px">$ <span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="journey">
+  <div class="wrap">
+    <h2>My QA journey</h2>
+    <p class="intro">Four organizations, one direction: from validating banking transactions by hand to owning a fully automated, CI/CD-driven API quality pipeline.</p>
+
+    <div class="timeline">
+      <article class="job">
+        <div class="when"><b>2025</b><span>Dec 2025 – Present</span></div>
+        <div class="card current">
+          <header>
+            <div>
+              <h3>Software Test Engineer</h3>
+              <div class="co-name">ELYX Digital</div>
+            </div>
+            <span class="badge">Current role</span>
+          </header>
+          <p class="meta">Pune, Maharashtra · Hybrid · Full-time · Client: McDonald's</p>
+          <ul>
+            <li>Automated testing of McDonald's Order Management System with Python, validating order flows end to end.</li>
+            <li>Built a Python scanner that sweeps the menus of all stores and flags pricing issues — such as items listed at zero price — before they reach customers.</li>
+            <li>Developed Python scripts that automate regular menu changes, replacing repetitive manual updates.</li>
+            <li>Built a Postman + Newman + Jenkins + Allure automation framework covering 150+ APIs (~1,000 test cases), widening end-to-end coverage across the microservices landscape.</li>
+            <li>Ran JMeter performance and stress tests across multiple APIs, validating throughput, latency and reliability under peak load to support go/no-go decisions.</li>
+            <li>Automated weekly system-information checks with Python, cutting manual effort by ≈30% per cycle.</li>
+            <li>Primary point of contact for API defect triage with development and product-owner teams; authored endpoint test plans, cases and execution reports.</li>
+            <li>Integrated Allure reporting into CI/CD so stakeholders see test trends and defect leakage in real time.</li>
+          </ul>
+          <div class="tags"><span>Postman</span><span>Newman</span><span>Jenkins</span><span>Allure</span><span>JMeter</span><span>Python</span><span>Grafana</span><span>Amazon S3</span><span>BDD</span></div>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><b>2024</b><span>Feb 2024 – Dec 2025</span></div>
+        <div class="card">
+          <header>
+            <div>
+              <h3>Test Engineer</h3>
+              <div class="co-name">iceDQ (Torana Inc.)</div>
+            </div>
+          </header>
+          <p class="meta">Nagpur, Maharashtra · On-site · Full-time</p>
+          <ul>
+            <li>API testing for enterprise data-validation services — REST endpoints, payloads, auth and error handling — uncovering 120+ critical API/backend defects.</li>
+            <li>Developed SQL-based backend validation for data pipelines, transformation logic and service workflows.</li>
+            <li>Wrote Python utilities to generate large datasets and simulate heavy loads, optimizing test execution cycles by ≈25%.</li>
+            <li>Performed Kubernetes-based deployment testing, validating container logs and service stability each release.</li>
+            <li>Reduced mean time to resolution for API incidents by ≈20% working alongside developers and product owners.</li>
+          </ul>
+          <div class="tags"><span>REST APIs</span><span>SQL</span><span>PostgreSQL</span><span>ETL testing</span><span>Kubernetes</span><span>Python</span><span>Selenium WebDriver</span><span>Java</span></div>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><b>2021</b><span>Dec 2021 – Jan 2024</span></div>
+        <div class="card">
+          <header>
+            <div>
+              <h3>Software Test Engineer</h3>
+              <div class="co-name">6Simplex Software Solutions Pvt Ltd</div>
+            </div>
+          </header>
+          <p class="meta">Nagpur, Maharashtra · On-site · Full-time</p>
+          <ul>
+            <li>Backend and API testing for geospatial, fintech and gaming platforms, validating 300+ API endpoints.</li>
+            <li>Engineered Jenkins + Git CI/CD pipelines for automated build, test and deploy, cutting release-cycle time by ≈15%.</li>
+            <li>Improved defect-detection efficiency by 25%, contributing to near-zero critical post-release issues across three production releases.</li>
+            <li>Ran UAT, regression and smoke cycles, coordinating with developers and business analysts on environments and defect resolution.</li>
+          </ul>
+          <div class="tags"><span>API testing</span><span>Jenkins</span><span>Git</span><span>AWS</span><span>Cloud management</span><span>UAT</span><span>Regression</span></div>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><b>2020</b><span>Feb 2020 – Oct 2021</span></div>
+        <div class="card">
+          <header>
+            <div>
+              <h3>Software Tester</h3>
+              <div class="co-name">Yalamanchili School of Learning Pvt Ltd</div>
+            </div>
+            <span class="badge" style="color:var(--amber);background:color-mix(in srgb,var(--amber) 14%,transparent)">Where it started</span>
+          </header>
+          <p class="meta">Nagpur, Maharashtra · On-site · Full-time</p>
+          <ul>
+            <li>Validated backend financial workflows and payment APIs with database-driven checks on transaction flows and reconciliations.</li>
+            <li>Verified 1,500+ banking transactions and their API workflows every testing cycle.</li>
+            <li>Executed smoke, regression and UAT cycles for banking systems ahead of each release.</li>
+            <li>Helped automate repetitive validation steps, reducing UAT cycle time by ≈10–15%.</li>
+          </ul>
+          <div class="tags"><span>SOAP UI</span><span>Payment APIs</span><span>Database testing</span><span>Mobile testing</span><span>Defect tracking</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Featured work</h2>
+    <p class="intro">Two systems I built that run without anyone pressing "Send".</p>
+
+    <article class="feature">
+      <div class="feature-head"><h3>Continuous API automation framework</h3><span class="where">ELYX Digital</span></div>
+      <p>Postman collections become a CI/CD testing engine: every change is versioned, run automatically and reported, covering 150+ APIs and ~1,000 test cases.</p>
+      <ol class="flow" aria-label="API automation pipeline">
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="13" height="16" rx="2"/><path d="M8 3v0M7 8h7M7 12h7M7 16h4"/><path d="M20 7v13a1 1 0 0 1-1 1H8"/></svg></div><b>Postman</b><span>Modular collections with pre-request setup and schema assertions</span></li>
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="8" r="2.2"/><path d="M6 7.2v9.6M18 10.2c0 4-6 3-11 6.8"/></svg></div><b>Git</b><span>Every test change reviewed and versioned</span></li>
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4L5.3 5.3"/></svg></div><b>Jenkins</b><span>Pipeline triggers on every change</span></li>
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M6.5 9.5l3 2.5-3 2.5M12 15h5"/></svg></div><b>Newman</b><span>Runs the collection headless from the CLI</span></li>
+        <li class="key"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><b>Allure report</b><span>Pass/fail trends, response times and payloads for every run</span></li>
+      </ol>
+      <div class="outcome"><span>150+ APIs automated</span><span>~1,000 test cases</span><span>Real-time defect visibility</span><span>Shorter regression cycles</span></div>
+    </article>
+
+    <article class="feature">
+      <div class="feature-head"><h3>Menu pricing scanner</h3><span class="where">McDonald's · via ELYX Digital</span></div>
+      <p>A Python script that checks the menu of every store and catches pricing mistakes, like an item listed at zero price, before a customer ever sees them.</p>
+      <ol class="flow" aria-label="Menu pricing scanner flow">
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v8h14v-8M10 20v-5h4v5"/></svg></div><b>All stores</b><span>Loops through every store location</span></li>
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H6a2 2 0 0 0-2 2v4l-2 2 2 2v4a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v4l2 2-2 2v4a2 2 0 0 1-2 2h-2"/></svg></div><b>Fetch menus</b><span>Pulls each store's live menu through the APIs</span></li>
+        <li><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.3-3.6"/></svg></div><b>Validate prices</b><span>Checks every item for zero or invalid prices</span></li>
+        <li class="warn"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></svg></div><b>Flag issues</b><span>Reports the store, item and problem found</span></li>
+        <li class="key"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><b>Fixed before customers</b><span>Pricing errors corrected before they cost money</span></li>
+      </ol>
+      <div class="outcome"><span>Every store scanned</span><span>Zero-price items caught</span><span>Also automates regular menu changes</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <h2>Impact, asserted</h2>
+    <p class="intro">Numbers from real projects, written the way I'd check them in a test.</p>
+    <div class="asserts">
+      <div class="assert"><code>expect(apis.automated).toBeGreaterThan(150) <span class="ok">✓</span></code><strong>150+ APIs</strong><p>~1,000 automated test cases running in one Postman → Jenkins → Allure pipeline.</p></div>
+      <div class="assert"><code>expect(endpoints.validated).toBeGreaterThan(300) <span class="ok">✓</span></code><strong>300+ endpoints</strong><p>Validated across geospatial, fintech and gaming platforms.</p></div>
+      <div class="assert"><code>expect(defects.critical).toBeGreaterThan(120) <span class="ok">✓</span></code><strong>120+ critical defects</strong><p>Caught at the API and backend layer before they reached users.</p></div>
+      <div class="assert"><code>expect(manualEffort).toDropBy("30%") <span class="ok">✓</span></code><strong>≈30% less manual effort</strong><p>Python automation for weekly system checks, store menu scans and menu changes.</p></div>
+      <div class="assert"><code>expect(detectionEfficiency).toRiseBy("25%") <span class="ok">✓</span></code><strong>+25% defect detection</strong><p>Structured API testing that led to near-zero critical escapes in production.</p></div>
+      <div class="assert"><code>expect(transactions.perCycle).toBeGreaterThan(1500) <span class="ok">✓</span></code><strong>1,500+ transactions</strong><p>Banking transactions and payment workflows verified every cycle.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Toolkit</h2>
+    <p class="intro">A tester who thinks like a developer: comfortable in APIs, SQL and Python, and in the pipelines that run them.</p>
+    <div class="skills">
+      <div class="group"><h3>API testing &amp; automation</h3><p>Where most of my work lives.</p><div class="tags"><span class="hl">Postman</span><span class="hl">Newman</span><span>REST APIs</span><span>SOAP UI</span><span>Test automation</span><span>BDD</span></div></div>
+      <div class="group"><h3>Performance</h3><p>Proving systems hold up at peak.</p><div class="tags"><span class="hl">JMeter</span><span>Load &amp; stress testing</span><span>Performance tuning</span><span>Grafana</span></div></div>
+      <div class="group"><h3>CI/CD &amp; reporting</h3><p>Tests that run without being asked.</p><div class="tags"><span class="hl">Jenkins</span><span>Git</span><span class="hl">Allure</span><span>Pipeline integration</span></div></div>
+      <div class="group"><h3>Data &amp; backend</h3><p>Checking what the UI can't show.</p><div class="tags"><span class="hl">SQL</span><span>PostgreSQL</span><span>ETL testing</span><span>Data pipelines</span></div></div>
+      <div class="group"><h3>Code &amp; UI automation</h3><p>Scripting the repetitive parts.</p><div class="tags"><span class="hl">Python</span><span>Java · LinkedIn skill assessment passed</span><span>Selenium WebDriver</span><span>Playwright basics</span></div></div>
+      <div class="group"><h3>Cloud &amp; infrastructure</h3><p>Validating where software actually runs.</p><div class="tags"><span>Kubernetes</span><span>AWS</span><span>Amazon S3</span><span>Container log analysis</span></div></div>
+    </div>
+    <div class="domains"><b>Domains tested:</b><span>QSR retail · McDonald's</span><span>Enterprise data</span><span>Fintech</span><span>Banking</span><span>Gaming</span><span>Geospatial</span></div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <p class="intro">The computer-science foundation behind thinking like a developer while testing like a user.</p>
+    <div class="edu">
+      <div class="degree">
+        <h3>Bachelor of Engineering, Computer Science</h3>
+        <p>Wainganga College of Engineering and Management</p>
+        <p>Dongargaon, Nagpur · 2014 – 2018</p>
+        <div class="yrs" aria-hidden="true">2018</div>
+      </div>
+      <div class="side">
+        <div class="mini"><h3>Coursework</h3><p>PHP, plus project management and project planning skills built during the degree.</p></div>
+        <div class="mini"><h3>Verified skill</h3><p>Passed the LinkedIn Skill Assessment in Java.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <h2>Sharing what I've learned</h2>
+    <p class="intro">I write on LinkedIn about the QA mindset, careers and ethics — a few posts have reached tens of thousands of testers.</p>
+    <div class="posts">
+      <button class="post" type="button" data-post="roadmap"><div><h3>Roadmap of QA: from manual to automation to quality engineer</h3><p>The three stages most testers grow through, and what to learn at each.</p><span class="read">Read post</span></div><div class="views">38K<small>impressions</small></div></button>
+      <button class="post" type="button" data-post="noqa"><div><h3>What if there is no QA in a project?</h3><p>Why quality is planned, tested and protected — never accidental.</p><span class="read">Read post</span></div><div class="views">25K<small>impressions</small></div></button>
+      <button class="post" type="button" data-post="notissue"><div><h3>Developer says "not an issue", QA says "critical"</h3><p>Handling severity disagreements with evidence and business impact.</p><span class="read">Read post</span></div><div class="views">19K<small>impressions</small></div></button>
+      <button class="post" type="button" data-post="evolve"><div><h3>How QA evolves year by year, from junior to lead</h3><p>The shift from finding bugs to building trust.</p><span class="read">Read post</span></div><div class="views">11.7K<small>impressions</small></div></button>
+      <button class="post" type="button" data-post="framework"><div><h3>Scaling API quality with Postman, Git, Jenkins and Allure</h3><p>The architecture of my continuous API automation framework.</p><span class="read">Read post</span></div><div class="views">596<small>impressions</small></div></button>
+    </div>
+    <details class="more-posts">
+      <summary>Show 4 more posts</summary>
+      <div class="posts">
+        <button class="post" type="button" data-post="scenario"><div><h3>Test scenario vs test case vs test script</h3><p>What to test, how to test it, and how it runs automatically.</p><span class="read">Read post</span></div><div class="views">5.1K<small>impressions</small></div></button>
+        <button class="post" type="button" data-post="exploratory"><div><h3>What is exploratory testing, and why every QA should learn it</h3><p>Designing, executing and learning at the same time.</p><span class="read">Read post</span></div><div class="views">1.2K<small>impressions</small></div></button>
+        <button class="post" type="button" data-post="devqa"><div><h3>Why a developer can't automatically become a QA</h3><p>Two roles, two mindsets — and why both matter.</p><span class="read">Read post</span></div><div class="views">1.2K<small>impressions</small></div></button>
+        <button class="post" type="button" data-post="ethics"><div><h3>Why QA never forgets ethics in an organization</h3><p>A release-night scenario where quality isn't negotiable.</p><span class="read">Read post</span></div><div class="views">532<small>impressions</small></div></button>
+      </div>
+    </details>
+    <p class="reach">100K+ total impressions · 1,200+ followers on LinkedIn</p>
+
+    <dialog class="reader" id="reader" aria-labelledby="reader-title">
+      <div class="reader-head">
+        <div class="avatar" aria-hidden="true">TG<img src="photo.jpg" alt="" onerror="this.remove()"></div>
+        <div class="who"><b>Tapshyu Ganvir</b><span>Senior API Testing Engineer · LinkedIn post</span></div>
+        <button class="x" type="button" data-close aria-label="Close post">×</button>
+      </div>
+      <div class="reader-body" id="reader-body"></div>
+      <div class="reader-foot"><span id="reader-stats"></span><a href="https://www.linkedin.com/in/tapshyu-ganvir-008aa1152/recent-activity/all/" target="_blank" rel="noopener">View on LinkedIn</a></div>
+    </dialog>
+
+    <template id="post-roadmap">
+      <h3 id="reader-title">🛣️ Roadmap of QA: From Manual ➝ Automation ➝ Quality Engineer 🚀</h3>
+      <p>A QA career doesn't stop at manual testing — it <strong>evolves</strong>. Here's a simple roadmap many testers follow in real projects 👇</p>
+      <h4>🔹 Step 1: Manual QA Foundation 🧪</h4>
+      <p>This is where every strong QA journey begins.</p>
+      <ul><li>Understanding requirements &amp; user stories</li><li>Writing test scenarios &amp; test cases</li><li>Functional, regression &amp; exploratory testing</li><li>Bug reporting &amp; tracking (JIRA, etc.)</li><li>Basics of SDLC &amp; Agile 🔄</li></ul>
+      <p>📌 Focus: <em>Think like a user, break the system</em></p>
+      <h4>🔹 Step 2: Move to Automation QA 🤖</h4>
+      <p>Once testing concepts are clear, automation becomes easier.</p>
+      <ul><li>Learn a programming language (Python / Java / JS) 💻</li><li>Automation tools (Selenium, Playwright, Cypress)</li><li>Frameworks (PyTest, TestNG, BDD)</li><li>API automation (Postman, RestAssured) 🌐</li><li>Version control (Git) &amp; CI/CD basics ⚙️</li></ul>
+      <p>📌 Focus: <em>Automate repetitive tests &amp; improve speed</em></p>
+      <h4>🔹 Step 3: Evolve into a Quality Engineer 🧠</h4>
+      <p>Automation is not the end — <strong>quality ownership</strong> is.</p>
+      <ul><li>Test strategy &amp; test planning</li><li>Shift-left testing &amp; early quality involvement ⏩</li><li>Performance &amp; security basics ⚡🔐</li><li>Test metrics &amp; quality reporting 📊</li><li>Collaboration with Dev, Product &amp; Business 🤝</li></ul>
+      <p>📌 Focus: <em>Quality across the entire product, not just testing</em></p>
+      <h4>🔁 Final Thought</h4>
+      <p>QA is not just about <strong>manual vs automation</strong>. It's about <strong>continuous learning, adaptability, and quality mindset</strong> 🌱</p>
+      <p>📍 From <strong>Tester ➝ Automator ➝ Quality Engineer</strong> — the journey is real, and worth it ✔️</p>
+      <p class="tagline">#QualityAssurance #ManualTesting #AutomationTesting #QAEngineer #SoftwareTesting #CareerGrowth</p>
+    </template>
+
+    <template id="post-noqa">
+      <h3 id="reader-title">❓ What if there is NO QA present in a project?</h3>
+      <p>Imagine releasing software without QA…</p>
+      <ul><li>🚨 Bugs reach production</li><li>🚨 Customers face crashes &amp; data issues</li><li>🚨 Business reputation takes a hit</li><li>🚨 Developers spend more time fixing than building</li><li>🚨 Costs increase due to late defect discovery</li></ul>
+      <p>QA is not just about finding bugs. It's about:</p>
+      <ul><li>✔️ Ensuring user trust</li><li>✔️ Protecting business value</li><li>✔️ Improving product quality</li><li>✔️ Supporting faster &amp; safer releases</li></ul>
+      <p>Without QA, software becomes a risk, not a solution.</p>
+      <p>👉 QA acts as the gatekeeper of quality, the voice of the user, and the safety net before release.</p>
+      <p><strong>Quality is never accidental — it is planned, tested, and protected.</strong></p>
+      <p class="tagline">#QualityAssurance #SoftwareTesting #QA #ProductQuality #TestingLife #TechThoughts</p>
+    </template>
+
+    <template id="post-notissue">
+      <h3 id="reader-title">🚨 Developer says: "This is not an issue." 🧪 QA says: "This is a critical issue."</h3>
+      <p>So… what should QA do in this situation? 🤔 This conflict happens in almost every project. But how QA handles it defines their maturity, credibility, and leadership.</p>
+      <h4>✅ How QA should behave 👇</h4>
+      <p><strong>🔹 Stay calm &amp; professional</strong><br>QA's job is not to argue — it's to protect product quality.</p>
+      <p><strong>🔹 Explain with evidence</strong><br>Show clear reproduction steps 📝, screenshots / videos 📸, and logs, API responses, or data impact 📊. Facts &gt; Opinions.</p>
+      <p><strong>🔹 Talk in business impact, not emotions</strong><br>Instead of ❌ "This is a big bug", say ✅ "This can impact user data, revenue, or production stability."</p>
+      <p><strong>🔹 Understand the developer's perspective</strong><br>Sometimes it's expected behavior, low technical risk, or a design decision. Listen first 👂</p>
+      <p><strong>🔹 Align on severity &amp; priority</strong><br>Severity = impact on user/system. Priority = when it should be fixed. Both should be agreed, not assumed.</p>
+      <p><strong>🔹 Escalate smartly (only if needed)</strong><br>If there's no agreement, share facts with the Product Owner / Manager. Keep it solution-focused, not personal.</p>
+      <h4>💡 Remember</h4>
+      <p>👉 QA is not here to prove developers wrong<br>👉 QA is here to make the product right</p>
+      <p>Strong QA builds trust, not tension 🤝</p>
+      <p>💬 Have you faced this situation? How did you handle it?</p>
+      <p class="tagline">#QA #SoftwareTesting #QualityAssurance #BugLife #DeveloperVsQA #TeamWork #AgileTesting</p>
+    </template>
+
+    <template id="post-evolve">
+      <h3 id="reader-title">📈 How QA Evolves Year by Year: From Junior to QA Lead</h3>
+      <p>Quality Assurance isn't just a role — it's a journey of mindset, skills, and responsibility.</p>
+      <p><strong>🔹 Junior QA</strong><br>Focus on fundamentals: understanding requirements, writing clear test cases, executing manual tests, and learning how users actually interact with the product. Curiosity matters more than speed.</p>
+      <p><strong>🔹 Mid-level QA</strong><br>You start thinking beyond test cases. You question edge cases, take ownership of features, learn automation &amp; API testing, collaborate closely with developers, and contribute to sprint-level quality.</p>
+      <p><strong>🔹 Senior QA</strong><br>Quality becomes strategic. You design test frameworks, improve CI/CD pipelines, mentor juniors, and make risk-based testing decisions that protect business and users.</p>
+      <p><strong>🔹 QA Lead</strong><br>Your role shifts from "testing" to enabling quality. You define processes, align QA with product goals, drive ethical and user-focused testing, and build strong, confident QA teams.</p>
+      <p>🌱 <strong>Key lesson:</strong> As QA grows, the focus moves from finding bugs to building trust.</p>
+      <p>Continuous learning, collaboration, and responsibility are what truly evolve a QA professional — year after year.</p>
+      <p class="tagline">#QualityAssurance #QACareer #SoftwareTesting #AutomationTesting #QAEngineer #TechCareers #Leadership</p>
+    </template>
+
+    <template id="post-framework">
+      <h3 id="reader-title">🚀 Scaling API Quality: How I Built a Continuous API Automation Framework with Postman, Git, Jenkins, and Allure</h3>
+      <p>API testing shouldn't just be about manually hitting "Send." As applications grow, maintaining an automated, scalable regression suite is critical.</p>
+      <p>I recently designed a modular API Automation Framework that transforms Postman collections into a fully automated, CI/CD-integrated testing engine. Here is how the architecture works:</p>
+      <h4>🎯 1. Structured Test Automation (Postman)</h4>
+      <ul><li><strong>Modular architecture:</strong> organised APIs into strict hierarchies using folders and subfolders to mimic the application's domain modules (e.g., Auth, Profile, Cart, Orders).</li><li><strong>Pre-request scripts:</strong> handled pre-conditions, dynamic environment variables, and setup logic directly under the request script configuration.</li><li><strong>Post-response scripts:</strong> implemented robust test assertions — covering status code verification, basic data structures, field validations, and deep data type schema testing.</li></ul>
+      <h4>🔄 2. Version Control &amp; Collaboration (Git)</h4>
+      <p>The entire Postman collection is maintained under version control. Any edits, additions, or deletions of endpoints and test cases are committed and pushed to a Git repository, ensuring proper code review and a single source of truth.</p>
+      <h4>⚙️ 3. Continuous Integration &amp; Execution (Jenkins)</h4>
+      <p>Triggered seamlessly via a continuous pipeline, Jenkins automatically pulls the latest version of the collection upon changes. The tests are executed programmatically via the command line, ensuring rapid execution in isolation.</p>
+      <h4>📊 4. Rich Analytical Reporting (Allure Report)</h4>
+      <p>Test outcomes are funnelled directly into Allure Reporting inside the Jenkins control panel. This grants the team granular visibility into pass/fail trends, defect categories, response times, and request/response payloads for deep debugging.</p>
+      <p>By taking tests out of siloed local environments and pushing them into a structured CI/CD loop, we've drastically cut down regression time and amplified deployment confidence.</p>
+      <p><em>How are you managing and running your API automation suites at scale? Let's discuss in the comments! 👇</em></p>
+      <p class="tagline">#APITesting #SoftwareTesting #Automation #Postman #Jenkins #CICD #AllureReporting #QAEngineering #DevOps</p>
+    </template>
+
+    <template id="post-scenario">
+      <h3 id="reader-title">🤔 Difference between Test Scenario, Test Case &amp; Test Script</h3>
+      <p>Many times during testing discussions, these three terms are used interchangeably. But in reality, they serve <strong>different purposes</strong> 🎯</p>
+      <p><strong>🔹 Test Scenario</strong><br>A <em>high-level idea</em> of what needs to be tested. It answers the question: <strong>"What should we test?"</strong><br>📝 Example: Verify login functionality.</p>
+      <p><strong>🔹 Test Case</strong><br>This goes one level deeper. It explains <strong>how to test</strong> a scenario with clear steps, test data, and expected results.<br>📋 Example: Enter valid username and password → click Login → user should be redirected to the dashboard.</p>
+      <p><strong>🔹 Test Script</strong><br>The <em>automated version</em> of test cases. It's written in code using tools like <strong>Selenium, Cypress, Playwright</strong>, etc., so tests can run automatically without manual effort 🤖</p>
+      <h4>📌 In short</h4>
+      <ul><li>🧠 Test Scenario → <strong>What to test</strong></li><li>🛠️ Test Case → <strong>How to test</strong></li><li>⚙️ Test Script → <strong>Automated execution</strong></li></ul>
+      <p>Understanding this difference helps in <strong>better planning</strong>, <strong>clear communication</strong>, and <strong>smoother collaboration</strong> between manual and automation teams 🤝</p>
+      <p>Quality always starts with <strong>clarity</strong> ✔️</p>
+      <p class="tagline">#SoftwareTesting #QA #TestScenario #TestCase #AutomationTesting #TestingBasics</p>
+    </template>
+
+    <template id="post-exploratory">
+      <h3 id="reader-title">🔍 What is Exploratory Testing &amp; Why Every QA Should Learn It</h3>
+      <p>Exploratory testing is <strong>not about following pre-written test cases</strong>. It's about <strong>exploring the application</strong>, learning how it behaves, and testing it at the same time 🧠</p>
+      <p>In simple terms: 👉 you design tests, execute them, and learn from the results <strong>simultaneously</strong>.</p>
+      <h4>🔹 What is Exploratory Testing?</h4>
+      <p>It's a testing approach where QA uses <strong>experience, intuition, and curiosity</strong> to find issues that structured test cases often miss. No fixed steps. No strict scripts. Just smart testing with a clear goal 🎯</p>
+      <h4>🔹 Why should QA learn it?</h4>
+      <p><strong>1️⃣ Finds real-world bugs 🐞</strong> — it mimics how actual users interact with the product, uncovering critical and edge-case issues.</p>
+      <p><strong>2️⃣ Improves product understanding 🧩</strong> — the more you explore, the better you understand workflows, risks, and hidden dependencies.</p>
+      <p><strong>3️⃣ Saves time ⏱️</strong> — perfect for early builds, frequent changes, and tight deadlines where detailed test cases may slow things down.</p>
+      <p><strong>4️⃣ Boosts critical thinking 🧠</strong> — it sharpens a tester's analytical and problem-solving skills.</p>
+      <p><strong>5️⃣ Adds value beyond test cases ⭐</strong> — even with automation and documentation, exploratory testing brings a human touch tools can't replace.</p>
+      <h4>📌 Final Thought</h4>
+      <p>Automation executes. Test cases validate. <strong>Exploratory testing thinks.</strong></p>
+      <p>A strong QA doesn't just follow steps — they <strong>ask questions, challenge assumptions, and explore the product</strong> 🔎</p>
+      <p class="tagline">#ExploratoryTesting #QualityAssurance #QA #SoftwareTesting #TestingMindset #ManualTesting</p>
+    </template>
+
+    <template id="post-devqa">
+      <h3 id="reader-title">🤔 Why a Developer Cannot Automatically Become a QA</h3>
+      <p>This might sound controversial, but it's an important discussion 👇 Being a great <strong>developer</strong> does <em>not</em> automatically make someone a great <strong>QA</strong> — and that's okay, because <strong>both roles require different mindsets</strong> 🧠</p>
+      <h4>🔍 Different mindsets, different goals</h4>
+      <p><strong>👨‍💻 Developer mindset:</strong> build features, make the code work, and think <em>"How do I implement this?"</em></p>
+      <p><strong>🧪 QA mindset:</strong> break features, question assumptions, and think <em>"What can go wrong?"</em></p>
+      <p>Writing code and <strong>challenging code</strong> are very different skills.</p>
+      <h4>⚠️ Why devs often struggle in a QA role</h4>
+      <ul><li><strong>1️⃣ Emotional attachment to code 💙</strong> — developers naturally trust what they build; QA must doubt everything, even when it "looks fine".</li><li><strong>2️⃣ Happy-path thinking 🚗</strong> — devs focus on expected behavior; QA focuses on edge cases, misuse, and real-world chaos.</li><li><strong>3️⃣ Business &amp; user perspective 👤</strong> — QA looks beyond code at user experience, business impact, and risk &amp; severity.</li><li><strong>4️⃣ Patience &amp; observation 🕵️</strong> — QA requires deep observation, repetition, and curiosity, not just logic.</li><li><strong>5️⃣ Communication over implementation 🗣️</strong> — QA spends more time explaining impact, negotiating severity, and aligning with product &amp; business.</li></ul>
+      <h4>📌 Important clarification</h4>
+      <p>This does <strong>not</strong> mean ❌ developers can't test or ❌ developers can't learn QA. It means ✅ QA is a <strong>specialized skill</strong>, and ✅ QA is more than "just testing".</p>
+      <h4>✅ Final Thought</h4>
+      <p>Developers build the product. QA protects the product. Both roles are equally important — and when they <strong>respect each other's strengths</strong>, quality truly improves 🤝</p>
+      <p class="tagline">#QualityAssurance #SoftwareTesting #QA #Developers #TestingMindset #ProductQuality</p>
+    </template>
+
+    <template id="post-ethics">
+      <h3 id="reader-title">🔍 Why QA Never Forgets Ethics in an Organization</h3>
+      <p>In the fast-paced world of software delivery, deadlines are tight, releases are frequent, and pressure is constant. Yet one role consistently stands firm on ethics — Quality Assurance.</p>
+      <p>🧠 Why? Because QA is the voice of truth.</p>
+      <h4>📌 A real-life QA scenario</h4>
+      <p>Imagine this: a release is scheduled for tonight 🚀 and everything looks "almost fine." During final regression, QA finds a critical bug:</p>
+      <ul><li>❌ Payment gets deducted</li><li>❌ But the order is not created</li></ul>
+      <p>The product owner says: 👉 "It's rare. Let's fix it in the next sprint." The deadline is tight. Marketing campaigns are already live.</p>
+      <p>QA has two choices:<br>1️⃣ Stay silent and let users lose money<br>2️⃣ Speak up, raise the issue, and delay the release</p>
+      <p>💡 <strong>Ethical QA chooses option 2.</strong></p>
+      <h4>⚖️ Because for QA, ethics mean</h4>
+      <ul><li>✔️ Users should never pay for our shortcuts</li><li>✔️ Data, money, and trust are not "minor issues"</li><li>✔️ Quality is not negotiable under pressure</li></ul>
+      <p>🛡️ QA protects more than software — they protect 👥 users, 🏢 brand reputation, 📜 compliance &amp; trust, and 💡 long-term product success.</p>
+      <p>🚦 When ethics are compromised, quality collapses. And when quality collapses, users lose trust. That's why QA doesn't forget ethics — <strong>because quality without ethics is just speed without direction.</strong></p>
+      <p>💬 Respect your QA. They're not blockers — they're guardians.</p>
+      <p class="tagline">#QualityAssurance #SoftwareTesting #EthicsInTech #QACommunity #RealLifeTesting #ProductQuality #Trust</p>
+    </template>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's engineer trust into your next release.</h2>
+    <p class="intro">Open to QA Lead roles, API quality strategy conversations, and building automation centers of excellence.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/tapshyu-ganvir-008aa1152/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <!-- Add your email: <a class="btn ghost" href="mailto:you@example.com">Email me</a> -->
+      <a class="btn ghost" href="#top">Back to top</a>
+    </div>
+    <dl>
+      <div><dt>Based in</dt><dd>Nagpur · working hybrid from Pune</dd></div>
+      <div><dt>Currently</dt><dd>Software Test Engineer, ELYX Digital (client: McDonald's)</dd></div>
+      <div><dt>Experience</dt><dd data-exp>6+ years</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> Tapshyu Ganvir</span><span>All tests passing.</span></div>
+</footer>
+
+<script>
+(function(){
+  // Experience computed from first role (Feb 2020) so it stays current
+  var start = new Date(2020, 1, 1), now = new Date();
+  var months = (now.getFullYear()-start.getFullYear())*12 + (now.getMonth()-start.getMonth());
+  var y = Math.floor(months/12), m = months%12;
+  // years.months style (6.8 = 6 years 8 months); spell out 10–11 months so it never reads "6.10"
+  var label = m === 0 ? y + " years" : m <= 9 ? y + "." + m + " years" : y + " years " + m + " months";
+  document.querySelectorAll("[data-exp]").forEach(function(el){ el.textContent = label; });
+  document.getElementById("yr").textContent = now.getFullYear();
+
+  // ELYX tenure since Dec 2025
+  var cur = (now.getFullYear()-2025)*12 + (now.getMonth()-11);
+  var curLabel = cur >= 12 ? Math.floor(cur/12)+"y"+(cur%12 ? " "+(cur%12)+"m" : "") : Math.max(cur,1)+"m";
+
+  var runs = document.querySelectorAll(".run"), summary = document.querySelector(".summary");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function finish(r){
+    r.classList.add("on","done");
+    r.querySelector(".mark").textContent = "✓";
+    var t = r.querySelector("[data-current]"); if(t) t.textContent = curLabel;
+  }
+  // LinkedIn post popup
+  var dlg = document.getElementById("reader"), body = document.getElementById("reader-body"), stats = document.getElementById("reader-stats"), lastBtn = null;
+  document.querySelectorAll(".post[data-post]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var tpl = document.getElementById("post-" + btn.dataset.post);
+      if(!tpl) return;
+      lastBtn = btn;
+      body.innerHTML = ""; body.appendChild(tpl.content.cloneNode(true)); body.scrollTop = 0;
+      var v = btn.querySelector(".views");
+      stats.textContent = v ? v.firstChild.textContent.trim() + " impressions" : "";
+      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+      document.body.style.overflow = "hidden";
+    });
+  });
+  function closeDlg(){ if(dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+  dlg.querySelector("[data-close]").addEventListener("click", closeDlg);
+  dlg.addEventListener("click", function(e){ if(e.target === dlg) closeDlg(); });
+  dlg.addEventListener("close", function(){ document.body.style.overflow = ""; if(lastBtn) lastBtn.focus(); });
+
+  if(reduce){ runs.forEach(finish); summary.classList.add("on"); return; }
+  var spin = ["◐","◓","◑","◒"];
+  runs.forEach(function(r,i){
+    setTimeout(function(){
+      r.classList.add("on");
+      var k=0, mark=r.querySelector(".mark");
+      var iv=setInterval(function(){ mark.textContent=spin[k++%4]; },90);
+      setTimeout(function(){ clearInterval(iv); finish(r); if(i===runs.length-1) setTimeout(function(){summary.classList.add("on");},250); },650);
+    }, 500 + i*800);
+  });
+})();
+</script>
+</body>
+</html>
